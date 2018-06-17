@@ -36,10 +36,18 @@ private static final String FAILURE_RESULT="<result>failure</result>";
     		return noteList;
     	}
      }
-    
-//    @GetMapping("/NotesService/notes/notes")
-//    @ResponseBody
-//    public Notes getNotes(@RequestParam(name="id") String id){
-//        return noteDao.getNote(id);
+//    @GetMapping("/NotesService/NewFile")
+//  
+//    public String showJSP{ 
+//    	return "NewFile.jsp";
+//    	
 //     }
+    @GetMapping("/Home")
+    public String showJSP(){
+        return "Home";
+     }
+    @GetMapping("/noteslist")
+    public String showNotes(){
+        return "NotesList";
+     }
 }
