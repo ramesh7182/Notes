@@ -30,17 +30,21 @@ URL url = new URL("http://localhost:8080/NotesService/notes");
 out.println();
 ArrayList<String[]> rowData =CommonMethod.getDataFromJSON(CommonMethod.getStringFromJSONAPI(url)); 
 int i =0;
+String noteId=null;
 for( String[] row : rowData)
 {
-	
+	i =0;
 	out.print("<tr>");
+	noteId = row[0];
 	for(String cell: row)
 		{
+		
 			out.print("<td>");
-			out.println("<a href ='"+"1"+"'>");
+			if(i==0 || i==1) out.println("<a href ='http://localhost:8080/ViewNote?id="+noteId+"'>");
 			out.print(cell);
-			out.print("</a>");
+			if(i==0 || i==1) out.print("</a>");
 			out.print("</td>");
+			i++;
 		}
 	out.print("</tr>");
 }

@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>This is a JSP File</h1>
+<h1>This is Home</h1>
+<a href = 'http://localhost:8080/noteslist'>Link To Note List</a>
+<br>
+<a href = ''>Link To Add a new Note</a>
 </body>
 </html>
