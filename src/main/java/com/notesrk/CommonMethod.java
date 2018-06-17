@@ -2,6 +2,7 @@ package com.notesrk;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -75,6 +76,49 @@ public class CommonMethod {
 		}
 		System.out.println("EXIT:getDataFromJSON");
 		return allrowdata;
+	}
+	
+	public static LinkedHashMap<String,String> getHashMapFromSingleRow(String str)
+	{
+		System.out.println("ENTER:getHashMapFromSingleRow");
+		StringBuilder htmlcode = new StringBuilder();
+		ArrayList<String[]> allrowdata = new ArrayList<>();
+		LinkedHashMap<String, String> mapdata= null;
+		int numOfcolumn =0;
+		try {
+		
+			JSONArray jsonArray = new JSONArray(str);
+			
+		for(int i=0;i<jsonArray.length();i++){
+			System.out.println("Row:"+i);
+		    JSONObject obj=jsonArray.getJSONObject(i); 
+		    numOfcolumn = obj.length();
+		    mapdata = new LinkedHashMap<String,String>();
+		    mapdata.put("id", obj.getString("id"));
+		    mapdata.put("title", obj.getString("title"));
+		    mapdata.put("description", obj.getString("description"));
+		    mapdata.put("category", obj.getString("category"));
+		    mapdata.put("subCategory", obj.getString("subCategory"));
+		    mapdata.put("dateAdded", obj.getString("dateAdded"));
+		    mapdata.put("dueDate", obj.getString("dueDate"));
+		    mapdata.put("priority", obj.getString("priority"));
+		    mapdata.put("userAuthor", obj.getString("userAuthor"));
+		    mapdata.put("assigned", obj.getString("assigned"));
+		    mapdata.put("status", obj.getString("status"));
+		    mapdata.put("comments", obj.getString("comments"));
+		   
+		 }
+		} catch (JSONException e) {
+			System.out.println("Error while reading JSON Array......................................+++++++++++");
+			e.printStackTrace();
+		}
+		catch (Exception e) {
+			System.out.println();
+			System.out.println("Generic Error: Error while reading JSON Array......................................+++++++++++");
+			e.printStackTrace();
+		}
+		System.out.println("EXIT:getHashMapFromSingleRow");
+		return mapdata;
 	}
 	
 }
