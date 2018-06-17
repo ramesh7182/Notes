@@ -34,10 +34,13 @@ public class CommonMethod {
 		return jsonString.toString();
 	}
 	
-	public static String getDataFromJSON(String str)
+	public static ArrayList<String[]> getDataFromJSON(String str)
 	{
 		System.out.println("ENTER:getDataFromJSON");
 		StringBuilder htmlcode = new StringBuilder();
+		ArrayList<String[]> allrowdata = new ArrayList<>();
+		String[] rowdata = null;
+		int numOfcolumn =0;
 		try {
 		
 			JSONArray jsonArray = new JSONArray(str);
@@ -45,22 +48,21 @@ public class CommonMethod {
 		for(int i=0;i<jsonArray.length();i++){
 			System.out.println("Row:"+i);
 		    JSONObject obj=jsonArray.getJSONObject(i); 
-		
-		    htmlcode.append("<td>"); htmlcode.append(obj.getString("id")); htmlcode.append("</td>");
-		    htmlcode.append("<td>"); htmlcode.append(obj.getString("title")); htmlcode.append("</td>");
-		    htmlcode.append("<td>"); htmlcode.append(obj.getString("description")); htmlcode.append("</td>");
-		    htmlcode.append("<td>"); htmlcode.append(obj.getString("category")); htmlcode.append("</td>");
-		    htmlcode.append("<td>"); htmlcode.append(obj.getString("subCategory")); htmlcode.append("</td>");
-		    htmlcode.append("<td>"); htmlcode.append(obj.getString("dateAdded")); htmlcode.append("</td>");
-		    htmlcode.append("<td>"); htmlcode.append(obj.getString("dueDate")); htmlcode.append("</td>");
-		    htmlcode.append("<td>"); htmlcode.append(obj.getString("priority")); htmlcode.append("</td>");
-		    htmlcode.append("<td>"); htmlcode.append(obj.getString("userAuthor")); htmlcode.append("</td>");
-		    htmlcode.append("<td>"); htmlcode.append(obj.getString("assigned")); htmlcode.append("</td>");
-		    htmlcode.append("<td>"); htmlcode.append(obj.getString("status")); htmlcode.append("</td>");
-		    htmlcode.append("<td>"); htmlcode.append(obj.getString("comments")); htmlcode.append("</td>");
-		    htmlcode.append("</tr>");
-		    
-
+		    numOfcolumn = obj.length();
+		    rowdata = new String[numOfcolumn];
+		    rowdata[0] = obj.getString("id");
+		    rowdata[1] = obj.getString("title");
+		    rowdata[2] = obj.getString("description");
+		    rowdata[3] = obj.getString("category");
+		    rowdata[4] = obj.getString("subCategory");
+		    rowdata[5] = obj.getString("dateAdded");
+		    rowdata[6] = obj.getString("dueDate");
+		    rowdata[7] = obj.getString("priority");
+		    rowdata[8] = obj.getString("userAuthor");
+		    rowdata[9] = obj.getString("assigned");
+		    rowdata[10] = obj.getString("status");
+		    rowdata[11] = obj.getString("comments");
+		    allrowdata.add(rowdata);
 		 }
 		} catch (JSONException e) {
 			System.out.println("Error while reading JSON Array......................................+++++++++++");
@@ -72,7 +74,7 @@ public class CommonMethod {
 			e.printStackTrace();
 		}
 		System.out.println("EXIT:getDataFromJSON");
-		return htmlcode.toString();
+		return allrowdata;
 	}
 	
 }

@@ -1,12 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ page import="java.util.List" %>
-     <%@ page import="java.util.ArrayList" %>
-     <%@ page import="java.io.InputStream" %>
-     <%@ page import="java.net.URL" %>
-     <%@ page import="java.net.URLConnection" %>
-      <%@ page import="java.io.BufferedReader" %>
-          <%@ page import="com.notesrk.CommonMethod" %>
+<%@ page import="java.net.URL" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.notesrk.CommonMethod" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,7 +11,7 @@
 </head>
 <body>
 <h1>The List of notes are below :- </h1>
-<table border=1><tr bgcolor=green>
+<table border=1><tr bgcolor='#CCE5FF'>
 <th>ID</th>
 <th>Title</th>
 <th>Description</th>
@@ -31,9 +27,21 @@
 </tr>
 <%
 URL url = new URL("http://localhost:8080/NotesService/notes");
-
-out.println(CommonMethod.getDataFromJSON(CommonMethod.getStringFromJSONAPI(url)));
-
+out.println();
+ArrayList<String[]> rowData =CommonMethod.getDataFromJSON(CommonMethod.getStringFromJSONAPI(url)); 
+int i =0;
+for( String[] row : rowData)
+{
+	
+	out.print("<tr>");
+	for(String cell: row)
+		{
+			out.print("<td>");
+			out.print(cell);
+			out.print("</td>");
+		}
+	out.print("</tr>");
+}
 %>
 </table>
 </body>
