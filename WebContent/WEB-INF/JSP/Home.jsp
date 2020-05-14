@@ -8,8 +8,8 @@
 </head>
 <body>
 <h1>This is Home</h1>
-<a href = '/noteslist'>Link To Note List</a>
+<a href = 'http://localhost:8080/noteslist'>Link To Note List</a>
 <br>
-<a href = 'http://localhost:8080/addNote'>Link To Add a new Note</a>
+<a href = ''>Link To Add a new Note</a>
 </body>
 </html>

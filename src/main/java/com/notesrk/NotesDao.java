@@ -7,7 +7,7 @@ import java.util.List;
 
 public class NotesDao {
 	public List<Notes> getAllNotes(){ 
-      
+      System.out.println("ENTER: getAllNotes");
       List<Notes> noteList = new ArrayList<Notes>(); 
       Notes note;
       HashMap<String, String> data=new HashMap<String, String>();
@@ -19,6 +19,7 @@ public class NotesDao {
     	  ResultSet rs=dbc.getDataFromDB(query);
     	  while (rs.next())
     	  {
+    		  data=new HashMap<String, String>();
     		  data.put("id", rs.getString("id"));
     		  data.put("description", rs.getString("description"));
     		  data.put("title", rs.getString("title"));
@@ -43,6 +44,7 @@ public class NotesDao {
       {
     	  dbc.closeDBConnection();
       }
+      System.out.println("EXIT: getAllNotes");
       return noteList; 
    }
 

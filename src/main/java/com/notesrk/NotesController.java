@@ -41,12 +41,7 @@ private static final String FAILURE_RESULT="<result>failure</result>";
     		return noteList;
     	}
      }
-//    @GetMapping("/NotesService/NewFile")
-//  
-//    public String showJSP{ 
-//    	return "NewFile.jsp";
-//    	
-//     }
+
     @GetMapping("/Home")
     public String showJSP(){
         return "Home";
@@ -59,6 +54,14 @@ private static final String FAILURE_RESULT="<result>failure</result>";
     public String ViewNote(@RequestParam(name="id",required=true) String id,Model model){
     	model.addAttribute("id", id.toString());
         return "ViewNote";
+     }
+    @GetMapping("/addNote")
+    public String addNote(){
+        return "AddNote";
+     }
+    @PostMapping("/addNoteAction")
+    public String addNoteAction(){
+        return "AddNoteAction";
      }
   
     
